@@ -26,7 +26,7 @@ export default function ContractDashboard({ walletAddress }: ContractDashboardPr
     async function loadStats() {
       if (!walletAddress) return
       try {
-        const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:4021"
+        const base = process.env.NEXT_PUBLIC_API_BASE || ""
         const res = await fetch(`${base.replace(/\/+$/, "")}/stats/${walletAddress}`)
         const data = await res.json()
         if (!res.ok) throw new Error(data?.error || "Failed to fetch stats")
